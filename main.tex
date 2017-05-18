@@ -1,0 +1,448 @@
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\title{Monografia TCC}
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	%twoside,			% para impressão em verso e anverso. Oposto a oneside
+    oneside,
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --    
+	english,			% idioma adicional para hifenização
+	% french,				% idioma adicional para hifenização
+	% spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento    
+	]{abntex2}
+    
+    %\renewcommand{\ABNTEXpartfontsize}{\normalsize}
+	%\renewcommand{\ABNTEXchapterfontsize}{ \large}
+	%\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+	%\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{todonotes}
+
+
+\definecolor{algColor}{RGB}{255,206,206} % rgb(255, 206, 206)
+
+% Pacotes para algoritmos/pseudo-código
+\usepackage{listings}
+
+\renewcommand{\lstlistingname}{Programa}
+
+\lstset
+{ %Formatting for code in appendix
+    language=C,
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    frame = single,
+    showstringspaces=false,
+    tabsize=2,
+    breaklines=true,
+    xleftmargin=10pt,
+    breakatwhitespace=false,
+    extendedchars=true,
+    literate={á}{{\'a}}1 
+             {ã}{{\~a}}1
+             {é}{{\'e}}1
+             {í}{{\'i}}1
+             {õ}{{\~o}}1
+             {ç}{{\c{c}}}1,
+}
+
+\renewcommand{\lstlistlistingname}{Lista de códigos}
+
+% Configura a ``Lista de Códigos'' conforme as regras da ABNT (para abnTeX2)
+\begingroup\makeatletter
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+  \globaldefs\@ne \let\c@loldepth\@ne
+  \newlistof{listings}{lol}{\lstlistlistingname}
+  \newlistentry{lstlisting}{lol}{0}
+\endgroup
+
+\renewcommand{\cftlstlistingaftersnum}{\hfill--\hfill}
+
+\let\oldlstlistoflistings\lstlistoflistings
+\renewcommand{\lstlistoflistings}{%
+   \begingroup%
+   \let\oldnumberline\numberline%
+   \renewcommand{\numberline}{\lstlistingname\space\oldnumberline}%
+   \oldlstlistoflistings%
+   \endgroup}
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+
+% ---
+% Pacotes de citações
+% ---
+%\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf, abnt-etal-cite=2]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+\usepackage{abntex_ufrr_dcc}
+
+
+% PACOTES DE ALGORITMO
+
+\usepackage{algpseudocode,algorithm}
+% Declaracoes em Português
+
+\algrenewcommand\algorithmicend{\textbf{FIM}}
+\algrenewcommand\algorithmicdo{\textbf{FAÇA}}
+\algrenewcommand\algorithmicwhile{\textbf{ENQUANTO}}
+\algrenewcommand\algorithmicfor{\textbf{PARA}}
+\algrenewcommand\algorithmicforall{\textbf{PARA TODO}}
+\algrenewcommand\algorithmicif{\textbf{SE}}
+\algrenewcommand\algorithmicthen{\textbf{ENTÃO}}
+\algrenewcommand\algorithmicelse{\textbf{SENÃO}}
+\algrenewcommand\algorithmicreturn{\textbf{RETORNE}}
+\algrenewcommand\algorithmicfunction{\textbf{FUNÇÃO}}
+% New definitions
+\algnewcommand\algorithmicswitch{\textbf{ESCOLHA}}
+\algnewcommand\algorithmiccase{\textbf{CASO}}
+\algnewcommand\algorithmicassert{\texttt{assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert(#1)}%
+% New "environments"
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]{\algorithmicswitch\ #1\ \algorithmicdo}{\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1}{\algorithmicend\ \algorithmiccase}%
+\algtext*{EndSwitch}%
+\algtext*{EndCase}%
+
+
+% Rearranja os finais de cada estrutura
+\algrenewtext{EndWhile}{\algorithmicend\ \algorithmicwhile}
+\algrenewtext{EndFor}{\algorithmicend\ \algorithmicfor}
+\algrenewtext{EndIf}{\algorithmicend\ \algorithmicif}
+\algrenewtext{EndFunction}{\algorithmicend\ \algorithmicfunction}
+
+% O comando For, a seguir, retorna 'para #1 -- #2 até #3 faça'
+\algnewcommand\algorithmicto{\textbf{até}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ #1 $\gets$ #2 \algorithmicto\ #3 \algorithmicdo}
+
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+%\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+%\renewcommand{\backref}{}
+% Define os textos da citação
+%\renewcommand*{\backrefalt}[4]{
+%	\ifcase #1 %
+%		Nenhuma citação no texto.%
+%	\or
+%		Citado na página #2.%
+%	\else
+%		Citado #1 vezes nas páginas #2.%
+%	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{VERIFICAÇÃO DE PROPRIEDADES DE GERENCIAMENTO DE MEMÓRIA DE PROGRAMAS EM C BASEADO EM TRANSFORMAÇÕES DE CÓDIGO}
+
+\autor{RAFAEL SÁ MENEZES}
+\local{Boa Vista - RR}
+\data{2017}
+\orientador{DSc. Herbert Oliveira Rocha}
+
+\tipotrabalho{Monografia}
+
+\preambulo{Monografia de Graduação apresentada ao Departamento de Ciência da Computação da Universidade Federal de Roraima como requisito parcial para a obtenção do grau de Bacharel em Ciência da Computação.}
+
+%Trabalho de conclusão de curso  na área de Verificação de Software desenvolvido na UFRR com o %objetivo \textcolor{red}{VERIFICAR O PADRÃO DOS OUTROS TCC} de gerar casos de teste para %sistemas embarcados críticos	
+
+% ---
+
+%-- Informações de dado para a FOLHA DE APROVAÇÃO
+\renewcommand{\dataDefesa}{06 de março de 2017}
+\renewcommand{\orientadorBanca}{Prof. Dr. Herbert Oliveira Rocha}
+\renewcommand{\primeiroMembroBanca}{Prof. MSc. Felipe Leite Lobo}
+\renewcommand{\segundoMembroBanca}{Prof. MSc. Miguel Raymundo Flores Santibañez}
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      	% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+\imprimirfolhadeaprovacao
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{ Este trabalho é dedicado a meu irmão Lucas que,\\
+   me mostrou seu jeito único de pensar.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+
+Primeiramente, quero agradecer a minha mãe Ana Paula Sá Menezes por sempre me apoiar em todas as minhas decisões e sempre me aconselhando, mesmo nos momentos difíceis e sempre visando meu futuro. 
+\par
+Gostaria de agradecer ao meu orientador, professor Herbert Oliveira Rocha, por sempre estar dando seu máximo para me auxiliar, aconselhar e incentivar.
+\par
+Aos professores Felipe Leite Lobo e Miguel Raymundo Flores Santibañez, por participarem da minha banca no trabalho de conclusão de curso.
+\par
+À professora Delfa Mercedes Huatuco Zuasnabar por ter me escolhido no projeto do MobileApps, onde pude ter minha primeira experiência com desenvolvimento móvel, o que foi algo muito útil ao decorrer do curso.
+\par
+À Universidade Federal de Roraima por ter me cedido diversas bolsas, graças a isso pude me dedicar mais as atividades acadêmicas.
+
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{``Não vos amoldeis às estruturas deste mundo, \\
+		mas transformai-vos pela renovação da mente, \\
+		a fim de distinguir qual é a vontade de Deus: \\
+		o que é bom, o que Lhe é agradável, o que é perfeito.\\
+		(Bíblia Sagrada, Romanos 12, 2)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+Um dos principais desafios durante o desenvolvimento de um sistema é garantir a corretude de um \textit{software}, uma vez que, em sistemas críticos um falha pode causar situações catastróficas. 
+Pela gravidade disso, a verificação de \textit{software} é fundamental. Esse trabalho propõe um método de validar propriedades de segurança de memória em programas escritos em C de forma automática, garantindo a corretude e qualidade do \textit{software}.
+
+ \vspace{\onelineskip}
+ 
+ \noindent 
+ \textbf{Palavras-chaves}: verificação de software, memória, programa em C, model checking.
+\end{resumo}
+
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   One of the main challenges in the system development is to ensure the correctness of the software, for instance, in the critical systems a failure can cause catastrophic situations. Therefore, the software verification plays an important role. This study proposes a method to automatically validate memory safety properties in software written in C programming language, guaranteeing the correctness and quality of the software.
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Key-words}: software verification. memory. c program. model checking
+ \end{otherlanguage*}
+\end{resumo}
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+  \item[V\&V] Verificação e validação de \textit{software}
+  \item[LLVM] Low-Level Virtual Machine
+  \item[CC] Condição de Caminho
+  \item[PC] Program Counter
+  \item[BMC] Bounded Model Checking
+  \item[CV] Condição de verificação
+  \item[GAD] Grafo acíclico direcionado
+  \item[ESBMC] Efficient SMT-Based Context-Bounded Model Checker
+  \item[CFG] Grafo de Controle de Fluxo
+  \item[SV-COMP] Competition on Software Verification
+\end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+% \begin{simbolos}  
+%   \item[$ \Gamma $] \todo{Atualizar esta lista!} Letra grega Gama
+%   \item[$ \Lambda $] Lambda
+%   \item[$ \zeta $] Letra grega minúscula zeta
+%   \item[$ \in $] Pertence
+% \end{simbolos}
+% % ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\chapter{INTRODUÇÃO}
+\input{sections/introducao.tex}
+
+% ----------------------------------------------------------
+% Conceitos e Definições
+% ----------------------------------------------------------
+\chapter{CONCEITOS E DEFINIÇÕES}
+\input{sections/conceitos_e_definicoes.tex}
+
+% ----------------------------------------------------------
+% Revisão de Literatura
+% ----------------------------------------------------------
+\chapter{TRABALHOS CORRELATOS}
+\input{sections/trabalhos_correlatos.tex}
+
+
+% ----------------------------------------------------------
+% Detalhes de Desenvolvimento do Projeto
+% ----------------------------------------------------------
+\chapter{MÉTODO PROPOSTO}
+\input{sections/metodologia.tex}
+
+% ----------------------------------------------------------
+% Cronograma
+% ----------------------------------------------------------
+\chapter{CRONOGRAMA}
+\input{sections/cronograma.tex}
+
+% ----------------------------------------------------------
+% Resultados -- Pode vir junto com discussão
+% ----------------------------------------------------------
+\chapter{RESULTADOS EXPERIMENTAIS}
+\input{sections/resultados_experimentais.tex}
+%\chapter{DISCUSSÃO}
+
+% ----------------------------------------------------------
+% Conclusão
+% ----------------------------------------------------------
+\chapter{CONSIDERAÇÕES PARCIAIS E TRABALHOS FUTUROS}
+\input{sections/consideracoes_parciais.tex}
+\newpage
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{main}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+%\phantompart
+\printindex
+%---------------------------------------------------------------------
+
+\end{document}

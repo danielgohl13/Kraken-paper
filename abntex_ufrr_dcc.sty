@@ -1,0 +1,151 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para monografias do curso de Ciência da Computação da Universidade Federal de Roraima
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Rafael Sá Menezes, rafa.sa.xp@gmail.com
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A UNIVERSIDADE FEDERAL DE RORAIMA
+% ---
+
+\ProvidesPackage{abntex_ufrr_dcc}[2016/10/16 Criacao desta customizacao do abnTeX2]
+
+\usepackage{times}
+\newcommand{\tituloInstituicao}{	    
+	{\ABNTEXchapterfont 
+    UNIVERSIDADE FEDERAL DE RORAIMA
+    \par
+    PRÓ-REITORIA DE ENSINO E EXTENSÃO
+    \par
+    DEPARTAMENTO DE CIÊNCIA DA COMPUTAÇÃO}
+}
+% alterando a capa
+\renewcommand{\imprimircapa}{%
+	\begin{capa}%
+		\center
+        	\includegraphics[height=.2\textwidth]{ufrr_logo}
+           \\
+            \vspace*{1cm}
+           
+			\tituloInstituicao
+            
+			\vspace*{1cm}
+			\vspace*{1cm}
+
+			% \vfill
+			{\ABNTEXchapterfont\imprimirautor}
+			% \vfill
+			\vfill
+
+			\begin{center}
+				\ABNTEXchapterfont\imprimirtitulo
+			\end{center}
+			\vfill
+			\vfill
+			\vfill
+
+			{\ABNTEXchapterfont\imprimirlocal}
+            
+			{\ABNTEXchapterfont\normalsize\imprimirdata}
+
+			\vspace*{1cm}
+\end{capa}
+}
+
+%folha de rosto
+
+\renewcommand{\imprimirfolhaderosto}{%
+	\begin{capa}%
+		\center
+			{\ABNTEXchapterfont\imprimirautor}
+			\vfill
+
+			\begin{center}
+				\ABNTEXchapterfont\bfseries\imprimirtitulo
+			\end{center}
+			\vfill
+            
+            \hfill
+			\begin{minipage}{0.45\textwidth}
+				\SingleSpacing
+       				 \imprimirpreambulo
+                     \\ \\
+					Orientador: \imprimirorientador
+   				 \end{minipage}%
+			\vfill
+			{\ABNTEXchapterfont\imprimirlocal}
+            
+			{\ABNTEXchapterfont\normalsize\imprimirdata}
+
+			\vspace*{1cm}
+\end{capa}
+}
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \includepdf{folhadeaprovacao_final.pdf}
+%
+
+
+\newcommand{\primeiroMembroBanca}{Professor}
+\newcommand{\segundoMembroBanca}{Professor}
+\newcommand{\orientadorBanca}{Professor Orientador}
+\newcommand{\cienciaComputacaoUFRR}{Curso de Ciência da Computação - UFRR}
+
+\newcommand{\dataDefesa}{\textcolor{red}{XX de XXXXXX XXX }}
+\newcommand{\imprimirfolhadeaprovacao}{
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\ABNTEXchapterfont\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+      \ABNTEXchapterfont\imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+                \hfill
+			\begin{minipage}{0.45\textwidth}
+				\SingleSpacing
+       				 \imprimirpreambulo \\ 
+                     Defendido em 06 de março de 2017 e aprovado pela seguinte banca examinadora:                    
+   				 \end{minipage}%
+    \vspace*{\fill}
+   \end{center}
+        
+   
+
+   \assinatura{\orientadorBanca \\ Orientador / \cienciaComputacaoUFRR} 
+   \assinatura{\primeiroMembroBanca \\ \cienciaComputacaoUFRR}
+   \assinatura{\segundoMembroBanca \\ \cienciaComputacaoUFRR}
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+      
+   \vspace*{1cm}
+
+  
+\end{folhadeaprovacao}
+}
+
+
+% ---
+

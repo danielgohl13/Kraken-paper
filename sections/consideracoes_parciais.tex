@@ -1,0 +1,15 @@
+\label{chapter:consideracoes}
+
+Neste trabalho foi apresentado a importância da verificação de \textit{software} para validar propriedades de segurança no gerenciamento de memória. Foi descrito um método proposto para aprimorar o método Map2Check além da implementação do mesmo, que é capaz de gerar, verificar e validar propriedades de segurança no gerenciamento de memória em programas em C. Adicionalmente, foi apresentado um avaliação experimental comparado a eficácia da ferramenta em relação a outras ferramentas com propostas similares. 
+\par
+O método até o presente momento é capaz de gerar, verificar e validar propriedades de segurança para desalocações inválidas, não gera o \textit{witness} no formato descrito em \citeonline{beyer:2016}, mas apresenta um log de rastreamento  
+%(para o \textit{witness} utilizar)
+com dados sobre a violação das propriedades. 
+ novo método quando comparado a versão anterior no quesito desalocações inválidas, o novo método apresentou melhorias significativas quanto a eficácia (segundo o \textit{benchmark} da SV-COMP'17), quando comparado as ferramentas atuais (SYMBIOTIC 4 \cite{Chalupa:2016} e ESBMC \cite{Cordeiro:2012} ), foi verificado que o Map2Check foi mais eficaz que o ESBMC e por apenas um programa, menos eficaz que SYMBIOTIC 4, que segundo \citeonline{beyer:2016} são ferramentas que usualmente apresentam bons resultados (obtendo posições no \textit{ranking}) no SV-COMP. Além disso, o Map2Check não gerou nenhum falso positivo, o que sugere que o método proposto é eficaz mesmo quando comparado a outras ferramentas.  
+ 
+ \par
+%\todo{corrigir formatação deste paragrafo}
+Na próxima etapa deste trabalho serão adicionadas novas funcionalidades ao método, entre elas: geração de \textit{witness} no formato descrito em \citeonline{beyer:2016} utilização de um \textit{model checker} para inferência de novas propriedades adoção de um \textit{slicer} de código; e 
+validação de vazamentos de memória. 
+Desta forma, espera-se que o Map2Check seja capaz de verificar e validar programas em C com mais eficiência e eficácia e assim solucionar o problema proposto por esse trabalho.  
+%\todo{Nas referências remover os textos com Citado X vezes por...; Nas referências manter padrão hora em maisculo ou minúscula}. 
