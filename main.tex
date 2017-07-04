@@ -40,6 +40,8 @@
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
 \usepackage{todonotes}
+\reversemarginpar % Coloca as anotações do lado esquerdo
+\setlength{\marginparwidth}{2.8cm}
 
 
 \definecolor{algColor}{RGB}{255,206,206} % rgb(255, 206, 206)
@@ -168,9 +170,9 @@
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{VERIFICAÇÃO DE PROPRIEDADES DE GERENCIAMENTO DE MEMÓRIA DE PROGRAMAS EM C BASEADO EM TRANSFORMAÇÕES DE CÓDIGO}
+  \titulo{DETECÇÃO DE OBJETOS PARCIALMENTE OBSERVÁVEIS EM AMBIENTE AQUÁTICO COM ALTA TURBIDEZ }
 
-\autor{RAFAEL SÁ MENEZES}
+\autor{PEDRO DANIEL DA SILVA GOHL}
 \local{Boa Vista - RR}
 \data{2017}
 \orientador{DSc. Herbert Oliveira Rocha}
@@ -184,10 +186,10 @@
 % ---
 
 %-- Informações de dado para a FOLHA DE APROVAÇÃO
-\renewcommand{\dataDefesa}{06 de março de 2017}
-\renewcommand{\orientadorBanca}{Prof. Dr. Herbert Oliveira Rocha}
-\renewcommand{\primeiroMembroBanca}{Prof. MSc. Felipe Leite Lobo}
-\renewcommand{\segundoMembroBanca}{Prof. MSc. Miguel Raymundo Flores Santibañez}
+\renewcommand{\dataDefesa}{?}
+\renewcommand{\orientadorBanca}{?}
+\renewcommand{\primeiroMembroBanca}{?}
+\renewcommand{\segundoMembroBanca}{?}
 
 % ---
 % Configurações de aparência do PDF final
@@ -205,10 +207,10 @@
 	    pdfcreator={LaTeX with abnTeX2},
 		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
     	filecolor=magenta,      	% color of file links
-		urlcolor=blue,
+		urlcolor=black,
 		bookmarksdepth=4
 }
 \makeatother
@@ -267,8 +269,8 @@
    \vspace*{\fill}
    \centering
    \noindent
-   \textit{ Este trabalho é dedicado a meu irmão Lucas que,\\
-   me mostrou seu jeito único de pensar.} \vspace*{\fill}
+   \textit{ } \vspace*{\fill}
+   Dedico esse trabalho a minha mãe e a minha namorada, peças fundamentais do meu sucesso.
 \end{dedicatoria}
 % ---
 
@@ -276,16 +278,7 @@
 % Agradecimentos
 % ---
 \begin{agradecimentos}
-
-Primeiramente, quero agradecer a minha mãe Ana Paula Sá Menezes por sempre me apoiar em todas as minhas decisões e sempre me aconselhando, mesmo nos momentos difíceis e sempre visando meu futuro. 
-\par
-Gostaria de agradecer ao meu orientador, professor Herbert Oliveira Rocha, por sempre estar dando seu máximo para me auxiliar, aconselhar e incentivar.
-\par
-Aos professores Felipe Leite Lobo e Miguel Raymundo Flores Santibañez, por participarem da minha banca no trabalho de conclusão de curso.
-\par
-À professora Delfa Mercedes Huatuco Zuasnabar por ter me escolhido no projeto do MobileApps, onde pude ter minha primeira experiência com desenvolvimento móvel, o que foi algo muito útil ao decorrer do curso.
-\par
-À Universidade Federal de Roraima por ter me cedido diversas bolsas, graças a isso pude me dedicar mais as atividades acadêmicas.
+Agradecer minha força de vontade imensa de ter conseguido focar em algo até o fim.
 
 \end{agradecimentos}
 % ---
@@ -296,11 +289,7 @@ Aos professores Felipe Leite Lobo e Miguel Raymundo Flores Santibañez, por part
 \begin{epigrafe}
     \vspace*{\fill}
 	\begin{flushright}
-		\textit{``Não vos amoldeis às estruturas deste mundo, \\
-		mas transformai-vos pela renovação da mente, \\
-		a fim de distinguir qual é a vontade de Deus: \\
-		o que é bom, o que Lhe é agradável, o que é perfeito.\\
-		(Bíblia Sagrada, Romanos 12, 2)}
+		\textit{}
 	\end{flushright}
 \end{epigrafe}
 % ---
@@ -312,23 +301,22 @@ Aos professores Felipe Leite Lobo e Miguel Raymundo Flores Santibañez, por part
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
-Um dos principais desafios durante o desenvolvimento de um sistema é garantir a corretude de um \textit{software}, uma vez que, em sistemas críticos um falha pode causar situações catastróficas. 
-Pela gravidade disso, a verificação de \textit{software} é fundamental. Esse trabalho propõe um método de validar propriedades de segurança de memória em programas escritos em C de forma automática, garantindo a corretude e qualidade do \textit{software}.
+
 
  \vspace{\onelineskip}
  
  \noindent 
- \textbf{Palavras-chaves}: verificação de software, memória, programa em C, model checking.
+ \textbf{Palavras-chaves}: 
 \end{resumo}
 
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
-   One of the main challenges in the system development is to ensure the correctness of the software, for instance, in the critical systems a failure can cause catastrophic situations. Therefore, the software verification plays an important role. This study proposes a method to automatically validate memory safety properties in software written in C programming language, guaranteeing the correctness and quality of the software.
+   
 
    \vspace{\onelineskip}
  
    \noindent 
-   \textbf{Key-words}: software verification. memory. c program. model checking
+   \textbf{Key-words}: 
  \end{otherlanguage*}
 \end{resumo}
 % ---
@@ -351,16 +339,8 @@ Pela gravidade disso, a verificação de \textit{software} é fundamental. Esse 
 % inserir lista de abreviaturas e siglas
 % ---
 \begin{siglas}
-  \item[V\&V] Verificação e validação de \textit{software}
-  \item[LLVM] Low-Level Virtual Machine
-  \item[CC] Condição de Caminho
-  \item[PC] Program Counter
-  \item[BMC] Bounded Model Checking
-  \item[CV] Condição de verificação
-  \item[GAD] Grafo acíclico direcionado
-  \item[ESBMC] Efficient SMT-Based Context-Bounded Model Checker
-  \item[CFG] Grafo de Controle de Fluxo
-  \item[SV-COMP] Competition on Software Verification
+  \item[e\&g] Verificação e validação de \textit{software}
+  
 \end{siglas}
 % ---
 
@@ -398,7 +378,7 @@ Pela gravidade disso, a verificação de \textit{software} é fundamental. Esse 
 % ----------------------------------------------------------
 % Conceitos e Definições
 % ----------------------------------------------------------
-\chapter{CONCEITOS E DEFINIÇÕES}
+\chapter{Fundamentação teórica}
 \input{sections/conceitos_e_definicoes.tex}
 
 % ----------------------------------------------------------

@@ -1,208 +1,56 @@
-Com o aumento da complexidade dos sistemas computacionais, diversas
-companhias e organizações estão
-rotineiramente lidando com software que contêm milhares de linhas de
-código, escritos por diferentes pessoas, e que usam diferentes
-linguagens, ferramentas e estilos \cite{Hoder:2011}. Adicionalmente,
-estes sistemas de software, devido ao curto espaço de tempo de
-liberação do produto ao mercado, precisam ser desenvolvidos
-rapidamente e atingir um alto nível de qualidade. Porém, os
-programadores cometem enganos.
-\par
-Isso pode ser visto quando um programador se equívoca ao escrever
-um requisito do sistema, como a alteração
-de uma condição de $x \leq 10$ para $x < 10$, tempo e
-esforço são gastos para encontrar e corrigir estes tipos de erro
-\cite{Gupta:2009}. Como consequência destes fatores, os erros durante
-o desenvolvimento de software se tornam mais comuns. Desta forma, faz-se
-necessário que as aplicações sejam projetadas tomando em consideração os
-requisitos de previsibilidade e confiabilidade, em
-aplicações de sistemas críticos esses requisitos devem ser ainda mais
-restritos, onde diversas restrições (como tempo
-de resposta e precisão dos dados) devem ser atendidas e mensuradas de
-acordo com os requisitos do usuário, caso contrário uma falha pode
-conduzir a situações catastróficas \cite{Rocha:2015tese}. Por exemplo, o erro de cálculo da
-dose de radiação no Instituto Nacional de Oncologia do Panamá que
-resultou na morte de 23 pacientes \cite{Wong:2010, Merz:2012}.
+No Brasil há uma grande diversidade de redes fluviais que são dividida em regiões hidrográficas, uma dessas regiões é a Bacia Amazônica, considerada a mais extensa do mundo \cite{portalbrasil:2009}. As águas dessa bacia são classificadas em branca, preta e clara \cite{sioli:2012}. Segundo \citeonline{barthem:2004} os rios de água branca tem turbidez elevada dificultando a visibilidade dentro d’água. De acordo com \citeonline{santos:2005} essa coloração branca é causada pela riqueza de minerais na água, e frequentemente entrada nos rios da região norte do Brasil.
+
+Nos últimos anos a demanda pela identificação de objetos submersos têm crescido, dado ao grande avanço nas observações oceânicas, que resultam em grandes quantidades de dados visuais de ambientes submersos a serem processados. Espécies de peixes e população são as tarefas mais importantes na observação oceânica, beneficiando pesquisadores, como cientistas e biólogos, bem como aplicações comercias como piscicultura (Qin et al 2016). 
+
+Em aplicações para identificação de peixes, câmeras colocadas em redes de observação oceânicas enfrentam dificuldades extremas causadas pelos ambientes naturais, tal como atenuação da luz e recifes e corais. Segundo Qin et al. (2016), com a utilização de matriz de decomposição para processar os vídeos, é possível extrair as linhas dos peixes em primeiro plano, assim eliminando o fundo da imagem, facilitando o processo de reconhecimento dos peixes.
+
+Segundo Van Damme (2015) é possível fazer a captação de dados em ambientes submersos, utilizando técnicas elementares como desenhos em escala, trilateração de fita métrica, medidas de deslocamento e fotografia simples. Esses métodos são ideais para fazer reconhecimento de sítios arqueológicos submersos. Porém esses métodos não são precisos, com exceção da fotografia, e levam muito tempo para serem construídos, e são propensos a erros humanos. Essas técnicas produzem apenas representações bidimensionais e tridimensionais com baixo nível de detalhes do local estudado.
+
+Segundo  Lu et al. (2017), o som pode ser usado para mapear ambientes, emitindo um pulso que reflete no fundo do oceano criando um sonograma. As imagens obtidas por este sonar se assemelham a imagens óticas, com níveis de detalhes bem superiores. O reflexo criado por esse sonar tem formato de leque, com a medida que o pulso se movimenta, os reflexos irão criar séries de linhas de imagem, perpendiculares ao feixe. Dependendo do ambiente estudado, o sonograma pode ser confuso, sendo necessário ter muita experiência para identificar as imagens.
+
+Na análise de feita por Van Damme, (2015) é afirmado que há técnicas avançadas de coleta tridimensional submersa, que são eficientes e altamente precisas. De acordo Watson et al. (2005), uma dessas técnicas é o remote stereo-video technique, que consiste em duas câmeras controladas remotamente no fundo do oceano. Van Damme, (2015) também descreve outra técnica como Computer Vision Photogrammetry (fotogrametria de visão computacional), que permite que uma série de imagens sejam carregadas em um software dedicado para gerar uma modelo tridimensional da cena ou objeto.
 
 
-\par
-Inspecionar manualmente um \textit{software} é uma tarefa complexa, assim, é comum defeitos no software passarem despercebidos que podem interromper o seu funcionamento. 
-%acabarem ocorrendo erros durante sua execução uma análise e com isso não gerar os casos de %teste necessários, o que acaba prejudicando a qualidade do sistema. 
-Por exemplo, em sistemas embarcados com uso continuo que podem gerar vários estados possíveis de execução. Uma forma de evitar isso é a utilização de técnica de verificação formal automatizadas, através delas é possível verificar o sistema garantindo a qualidade do \textit{software}, pois através de métodos formais é possível gerar todos os casos de testes necessários para validação do sistema \cite{dsilva:2008}. Teste é um modo objetivo de verificar a corretude da implementação de um sistema, detectando algum comportamento inesperado em um caminho, testes não garantem que todo o programa está funcionando, apenas garantem que o programa está correto para determinado conjunto de testes. Métodos formais são considerados a forma rigorosa de verificar \textit{software} e analisar os sistemas com mais precisão, pois são capazes de gerar um conjunto de testes ideal para analisar o sistema \cite{ding:2008}.
+Visando contribuir com o desenvolvimento de sistemas computacionais, o contexto deste trabalho está situado em projetar e desenvolver um sistema computacional que seja capaz de detectar objetos submersos em águas turvas, utilizando: uma câmera otíca submersa com auxílio de sonares; visão computacional e algoritmos de classificação de padrões. Assim, os dados colhidos através do sistema serão enviados para um computador através de uma conexão sem fio, e então serão processados e classificados. O sistema será controlado a partir de  um computador e  irá fazer uma estimativa da distância e dimensões do objeto de acordo com a classificação. 
 
 
-\par
-A verificação formal tem desempenhado um papel importante para
-assegurar a confiabilidade e a qualidade no desenvolvimento de
-aplicações críticas (como \textit{softwares} para piloto automático de aviões). 
-Segundo \citeonline{Bensalem:1999}, \textit{model
-checking} é uma técnica baseada em métodos formais utilizados para provar propriedades de programas. O \textit{model checking} é uma técnica automatizada que, dado um modelo de estados finitos de um sistema e uma propriedade formal, sistematicamente checa se a propriedade é verdadeira para o modelo \cite{Baier:2008}.Esta técnica gera uma busca exaustiva no espaço de estados do modelo para
-determinar se uma dada propriedade é válida ou não \cite{Baier:2008}. A principal razão para o sucesso da técnica \textit{model checking} se dá por funcionar de maneira automática, não havendo necessidade da intervenção do usuário. Entretanto, a técnica \textit{model checking} ainda possui algumas dificuldades, tais como: lidar com a explosão do espaço de estados do modelo, integração com outros ambientes de testes e tratamento e análise de contra-exemplos \cite{Clark:2008}.
+\section{Definição do problema} 
 
-\par
-Este trabalho visa aperfeiçoar o método Map2Check \cite{Rocha:2015}, que visa a geração automática de casos de testes para a verificação de gerenciamento de memória de programas escritos em C, sendo a geração desses testes baseadas em
-assertivas extraídas de propriedades de seguranças geradas por ferramentas de
-\textit{Bounded Model Checking}. No trabalho do Map2Check, \citeonline{Rocha:2015}
-comentam sobre a dificuldade em se fazer a análise diretamente em códigos fontes escritos em C
-e indica a utilização de uma representação intermediário do código do programa ou o uso de instrumentação em código binário nos seus trabalhos futuros, como uma solução para o problema, outro problema com o uso da linguagem C é percorrer o código com estruturas de alto nível, sendo complexo adicionar execução simbólica de forma automática. Neste sentido, as melhorias para o método Map2Check consiste em adicionar: 
-%utilizar instrumentações em código intermediário com o LLVM:
-1) a ferramenta Clang como \textit{front-end} para programas em C \cite{LLVM:2017}; 
-2) o \textit{framework} LLVM como base para aplicações de transformações de código utilizando a representação intermediária LLVM \textit{bitcode} \cite{LLVM:2017}; e
-3) o Klee para execução simbólica de código baseado em LLVM \cite{Cadar:2008:KUA}; 
+%\textcolor{red}{TEXTO INTRODUTORIO\todo{Adicionar um breve texto para motivar a sua questão de pesquisa}Texto:  por exemplo, em um rio com baixa visibilidade que contém destroços pode interferir na segurança e eficiência no trabalho de um mergulhador.}
 
-\par
-O \textit{Low-Level Virtual Machine} (LLVM) é um \textit{framework} de compilação cujo objetivo é fazer análises de programas e transformações que fiquem disponível para \textit{softwares} arbitrários de uma maneira que seja transparente ao programa original, por meio de: (a) o uso de uma representação intermediária (LLVM IR) de código capaz de descrever ações de análise e transformação de forma simples; e (b) uma infraestrutura de compilação capaz de tirar o maior proveito dessa linguagem \cite{Lattner:2004}. O \textit{framework} LLVM é utilizado por empresas como \textit{Apple Inc.}, \textit{Intel}, \textit{NVIDIA}, \textit{Sony Interactive Entertainment} \cite{LLVM:2009} e \textit{Google} \cite{LLVM:2011} por ser uma plataforma estável e robusta. \citeonline{Kim:2015} utiliza LLVM para fazer transformações de código (para otimizações) Android.
+%Como projetar um sistema computacional capaz de detectar e classificar objetos submersos em ambiente aquáticos com alta turbidez e parcialmente observáveis, de forma que a distância e as dimensões dos objetos sejam estimadas, e adicionalmente que os usuários deste sistema possam opera-lo remotamente?
 
-\par
-O aprimoramento do Map2Check \cite{Rocha:2015} neste trabalho, tem como base métodos adotados em trabalhos como o LEAKPOINT \cite{Clause:2010} e o SYMBIOTIC 3 \cite{Chalupa:2016} 
-que exploram o uso de técnicas de compiladores para analisar códigos-fonte 
-em C para fazer a instrumentação dos mesmos. A diferença para as versões 
-anteriores do Map2Check será na utilização de código intermediário usando LLVM IR, ou seja, a partir de um programa em C, será gerado um código LLVM IR, onde
-faremos a instrumentação do mesmo e assim poderemos validar as
-propriedades de segurança desejadas, como desalocações inválidas e vazamentos de memória. Utilizar uma linguagem intermediária tem a vantagem de que embora o foco do projeto seja a linguagem C, qualquer código em uma linguagem de programação que for compilada para LLVM IR, poderá ser
-analisado pelo Map2Check.
+O problema considerado neste trabalho é expresso na seguinte questão: Como identificar ou detectar objetos submersos em ambiente aquáticos com alta turbidez e parcialmente observáveis, de forma que a distância e as dimensões do objetos sejam estimados, por exemplo se um rio com baixa visibilidade contém destroços, pode interferir na segurança e eficiência no trabalho de um mergulhador?
+
+%\section{Motivação} Com a dificuldade na locomoção e exploração dentro de ambientes aquáticos com turbidez comprometendo o desempenho de profissionais e pesquisadores, é necessário um método para auxiliar a visibilidade e detecção de possíveis destroços e objetos nocivos.
 
 
-% ----------------------------------------------------------
-% MOTIVAÇÃO
-% ----------------------------------------------------------
-\section{Motivação}
+\section{Objetivo Geral}
+Projetar e demonstrar um sistema móvel que seja capaz de detectar objetos submersos em ambientes aquáticos com baixa visibilidade, e que possa calcular a estimativa da distância e as dimensões de objetos baseado em processamento de imagens, utilizando técnicas de visão computacional, de tal forma que o sistema proposto possa ser aplicado para auxiliar em missões de exploração ou de resgate e na piscicultura, provendo um modo de superar as limitações da visão humana.
 
-A grande quantidade de áreas distintas para sistemas de \textit{software} de alto risco cria uma necessidade de um alto grau de confiabilidade. Uma falha em um sistema ambiental, militar, médico ou aerospacial pode criar um problema catastrófico. Sendo assim, um dos motivos deste trabalho é a necessidade de garantir a corretude de sistemas, que é acompanhada  pelo aumento da complexidades dos mesmo, ao mesmo tempo em que, por pressão econômica os prazos de entrega diminuem. O aumento da complexidade juntamente com a diminuição no prazo tornam mais difícil a tarefa de verificação do sistema a ser entrega. Isto motiva a pesquisa por formas automáticas de verificação e correção de \textit{software} \cite{dsilva:2008}
+\section{Objetivos Específicos}
+Os objetivos específicos são os seguintes:
+	\begin{enumerate}
+		\item Identificar métodos para a modelagem do software e do hardware;
 
-Um tipo de falha que pode impactar na performance e na corretude da aplicação é vazamentos de
-memória. Em linguagens de programação como C, uma função de alocação reserva um espaço
-previamente livre de memória (chamaremos de \texttt{m} esse espaço) e retornam um ponteiro 
-(chamaremos de \textit{p} esse ponteiro) que aponta para o primeiro endereço dessa espaço
-alocado. Normalmente, um programa armazena e somente então utiliza \textit{p}, ou algum outro
-ponteiro derivado de \textit{p}, para interagir com \textit{m}. Quando \textit{m} não for mais
-necessário, o programa deverá mandar \textit{p} para uma função de desalocação. Um vazamento
-ocorre se, por algum erro durante o gerenciamento da memória, \textit{m} não é desalocado no
-tempo correto \cite{Clause:2010}.
+		\item Definir um modelo formal que represente o fluxo de execução do sistema proposto, visando analisar propriedades de segurança;
 
-Os vazamentos por não gerarem um erro fatal (onde um sistema para sua execução) muitas vezes 
-passam despercebidos (em 2009 mais de 100 vazamentos de memória foram reportados no navegador
-Firefox), tipicamente esse vazamentos só são detectados após eles consumirem uma grande parte
-da memória do sistema, causando assim impacto em todas as aplicações rodando no sistema. 
-Por essas sérias consequência e ocorrências comuns, muitas técnicas foram criadas para os
-detectar, porém em muitas situações não são técnicas simples de se aplicar \cite{Clause:2010}.
+		\item Demonstrar uma técnica para transformação de modelos de software em códigos do projeto;
 
+		\item Propor um método para identificar objetos submersos em ambientes aquáticos com baixa visibilidade, utilizando processamento de imagem;
 
+		\item Propor um método ou técnica para classificar os objetos identificados pelo sistema, visando calcular uma estimativa de sua distância e dimensões;
 
-% ----------------------------------------------------------
-% PROBLEMA
-% ----------------------------------------------------------
-\section{Definição do Problema}
-A verificação de gerenciamento de memória é uma tarefa importante para evitar comportamentos inesperados de programas, por exemplo, uma violação na propriedade de segurança de um ponteiro resulta em um endereço errado, que pode acabar produzindo uma saída incorreta do programa e não necessariamente um erro. Um vazamento de memória não produz nenhum sintoma que seja visível facilmente ou detectado imediatamente como um erro ou a saída de um valor errado. Entretanto, vazamentos de memória geralmente continuam sem ser observados até consumirem uma grande porção da memória disponível no sistema, com isso, pode-se gerar em um impacto negativo em outras aplicações que estiverem sendo executadas no mesmo sistema \cite{Clause:2010}. Devido as sérias consequências e ocorrências comuns de erros de gerenciamento de memória, ainda existem campos de pesquisa aberto para aprimorar a detecção de error \cite{Rocha:2015tese}
+		\item Projetar um sistema capaz de capturar dados de ambientes aquáticos submersos;
 
-%O \textit{model checking} contém várias vantagens em relação a outras técnicas \cite{Clark:2008}, algumas dessas vantagens seriam:
-%\begin{itemize}
-%\item O usuário de um \textit{model checker} não necessita construir provas de corretude
-% \item O processo de verificação é automático
-% \item \textit{Model checking} é rápido se comparado a outros métodos
-% \item Se uma especificação não for satisfeita, o \textit{model checker} produzirá um contra-exemplo do caminho da execução, demonstrando o porque a especificação não está segura.
-% \item Lógicas temporais podem ser facilmente expressas
-% \end{itemize}
-%
-% Assim como \citeonline{Clark:2008} descreveu as vantagens ele também comenta algumas desvantagens do \textit{model checking}
-% \begin{itemize}
-% \item O \textit{model checking} não comprova o erro identificado no programa
-% \item A escrita de especificações nem sempre é uma tarefa trivial
-% \item O problema da explosão de estados, que é causado devido ao grande número dos estados de um sistema, podendo chegar a números exponenciais
-% \end{itemize}
-% Observando essas desvantagens, pode-se identificar campos de pesquisa em aberto, \citeonline{Clarke:2009} comenta sobre como a utilização de execução simbólica poderia simplificar o problema da explosão de estados
+		\item Validar o sistema proposto, pela análise de testes práticos e simulados, a fim de examinar a sua eficácia e aplicabilidade.
 
-%TODO: Melhorar o problema
-O problema considerado neste trabalho é expresso na seguinte questão:
-\textbf{Como complementar e aprimorar a verificação de propriedades de
-  segurança de memória, com foco em aritmética de ponteiros e vazamentos de memória, 
-  com aplicação na linguagem de programação C?}
-
-  
-% ----------------------------------------------------------
-% OBJETIVOS
-% ----------------------------------------------------------
-\section{Objetivos}
-O objetivo principal deste trabalho é aprimorar um método para 
-%aprimorar 
-a verificação de propriedades de segurança de memória em 
-software escritos na linguagem de programação C, por meio 
-de transformações de código e uso da técnica \textit{ model checking}. 
-
-Os objetivos específicos são:
-\begin{enumerate}
-\item Demonstrar melhorias em um método de geração e verificação 
-  de casos de teste estruturais, baseado nas propriedades de 
-  segurança de gerenciamento de memória.
-  
-\item Propor uma técnica para instrumentação de programas escrito em
-  C, adotando técnicas de compiladores como análise de representações
-  intermediaria de código.
+	\end{enumerate}
     
-\item Propor uma técnica baseada em execução simbólica para gerar
-  dados de teste e identificação de localizações de erro em programas
-  escritos em C.
-   
-\item Validar a aplicação dos métodos sobre \textit{benchmarks} públicos de
-  programas em C, a fim de examinar a sua eficácia e aplicabilidade.
-\end{enumerate}
-
-
-% ----------------------------------------------------------
-% METODOLOGIA
-% ----------------------------------------------------------
-\section{Metodologia Proposta}
-Esta seção descreve as principais etapas que foram identificadas para alcançar os objetivos desta proposta de projeto. Estas etapas fornecem os passos necessários e direções para desenvolver o método proposto e podem ser descritas em três diferentes fases como segue: 
-análise do domínio, metodologia proposta e validação da metodologia.
-%
-Na etapa de análise de domínio, toda a teoria necessária para entender os métodos, técnicas e ferramentas aplicadas à verificação e teste de software são analisadas e avaliadas. 
-%
-Na fase da metodologia proposta, uma versão inicial da metodologia para o desenvolvimento do 
-método proposto, tem como foco uma ou mais restrições, e seu escopo serão precisamente definidos e propostos. 
-%
-Depois disso, esta metodologia é mais adiante refinada na fase de validação aplicando-a na verificação dos estudos de caso, visando uma avaliação experimental da solução proposta.
-
-
-\par
-Com o intuito de realizar as atividades deste trabalho, uma abordagem iterativa e incremental é 
-usada com o propósito de reduzir riscos e incertezas. Sendo assim, para cada incremento do
-projeto do trabalho, as três etapas nomeadas neste trabalho como análise do domínio, metodologia proposta e validação da metodologia podem ser tratadas com diferentes ênfases em cada fase do trabalho.
-\par
-Por exemplo, no início do trabalho, a análise de domínio provavelmente terá maior ênfase do que as outras fases metodologia proposta e validação da metodologia. Na metade do trabalho, a fase de metodologia proposta provavelmente terá mais ênfase do que as outras duas fases. Finalmente, a fase de validação da metodologia provavelmente terá mais ênfase no fim do projeto de pesquisa. A principal razão para adotar uma abordagem iterativa e incremental é desenvolver o projeto incrementalmente, permitindo assim tirar vantagem do que foi aprendido durante cada incremento do projeto \cite{Schwaber:2002}.
-
-% ----------------------------------------------------------
-% CONTRIBUIÇÕES
-% ----------------------------------------------------------
-\section{Contribuições Propostas}
-As contribuições proposta por esse trabalho são: 
-\begin{enumerate}
-\item A implementação e avaliação de um método para a verificação e teste de programas em C. 
-      O método proposto gera automaticamente casos de teste baseada em propriedades de segurança geradas através da instrumentação de código. Essas propriedades estão relacionadas à gerenciamento de memória e alcançabilidade de estados no programa.
-      
-\item  Este trabalho apresenta para o método proposto, o desenvolvimento e implementação de um 
-      rastreador de endereços de memória baseado em representação intermediária (LLVM-IR) para auxiliar na verificação das propriedades do programa. Assim, esta contribuição auxilia na integração de técnicas formais de forma automática. 
-      
-\item Este trabalho visa contribuir com método Map2Check \cite{Rocha:2015}, consiste em 
-     adicionar: 
-     1) a ferramenta Clang como \textit{front-end} para programas em C \cite{LLVM:2017};
-     2) o \textit{framework} LLVM como base para aplicações de transformações de código utilizando a representação intermediária LLVM \textit{bitcode} \cite{LLVM:2017}; e
-     3) o Klee para execução simbólica de código baseado em LLVM \cite{Cadar:2008:KUA}.
-\end{enumerate}
-     
-\section{Organização do Trabalho}
-A introdução deste trabalho apresentou: o contexto, definição do problema, motivação, objetivos, metodologia e contribuições dessa pesquisa. Os capítulos restantes são organizados da seguinte forma:
-\par
-No \autoref{chapter:conceitos} \textbf{Conceitos e Definições}, são apresentados os conceitos abordados neste trabalho, especificamente: Verificação e Validação de \textit{Software}, Propriedades de Segurança, \textit{Bounded Model Checking}, Execução Simbólica e Técnicas de Compiladores.
-\par
-No \autoref{chapter:correlatos} \textbf{Trabalhos Correlatos}, são analisados os trabalhos correlatos ao método Map2Check.
-%, como a versão anterior, o SYMBIOTIC 3 e o LEAKPOINT.
-\par
-No \autoref{chapter:metodo} \textbf{Método Proposto}, é descrito as etapas de execução do novo método proposto ao Map2Check.
-% de forma que o leitor possa reproduzir a técnica. 
-Em especial, são descritos: Geração da representação intermediária; Biblioteca para rastreamento de endereços de memória e assertivas; Instrumentação de funções; e Verificação do  do programa analisado. Por fim é apresentado o cronograma das atividades deste trabalho.
-\par
-No \autoref{chapter:resultados} \textbf{Resultados Experimentais}, descreve-se a execução de uma avaliação experimental sobre o método proposto, bem como, 
-%descrevendo o \textit{benchmark} da SV-COMP utilizado e no fim é feita 
-uma análise dos resultados obtidos, onde comparamos o novo Map2Check com outras ferramentas. 
-\par
-E por fim no \autoref{chapter:consideracoes} \textbf{Considerações parciais e trabalhos futuros}, apresenta-se as considerações parciais e os trabalhos futuros a serem desenvolvidos. 
+    Texto sobre a figura\todo{Atualizar e melhorar o deseja da bioa}.
+    
+\begin{figure}[h]
+	\caption{\label{fig:bigpic}Visão Geral}
+	\includegraphics[width = 1\textwidth]			{resources/bigpicture}
+    \legend{Fonte Própria}
+\end{figure}
