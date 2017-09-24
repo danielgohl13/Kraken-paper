@@ -1,14 +1,50 @@
 \label{chap:trab_cor}
 
 \section{DeepFish: Accurate underwater live fish recognition with deep architecture}
+o artigo propõe um framework para reconhecimento preciso de peixes em vídeos gravados submersos em água. O framework baseado em uma Convucional Neural Network, consiste em processar as imagens atrávez de uma decomposição de matrizes, então os dados extraídos são passados para detecção de imagens de peixes, depois passados para uma camada não linear para classificação (Support Vector Machine). 
+
+O resultado mostra que a taxa de aprendizado diminui a medida que a quantidade de parâmetros são adicionados, necessitando assim de uma otimização no filtro de aprendizado.
+
+Com o framework proposto espera-se avanços na área de pesquisas sobre reconhecimento de peixes, explorar soluções no reconhecimento de objetos submersos. Beneficiar biológos, ecologistas e fins comerciais como fazendas de peixes.
 
 \section{Automatic underwater image pre-processing}
 
-\section{Foreground Extraction of underwater Videos via Sparse and Low-rank Matrix Decomposition}
+O artigo propõe um filtro de processamento para restauração de imagens de ambiente submersos. Pela da trasmissão de propriedades da luz sobre a água, imagens de ambiente submersos sofrem de perda de distância de captura, distorção de luz, baixo contraste, baixa saturação de cor e outros problemas. Os métodos de processamento de imagens atuais focam em distorção e atenuação causados pela luz e precisam de conhecimendo do ambiente que está sendo estudado. O algoritmo proposto, é um algoritmo que automatiza o pré-processamento de imagens submersas.  a filtro reduz as pertubações nas imagens submersas, e melhorando a qualidade da imagem.
+
+ Processos independentes e sucessivos que corrigem a ilumação não uniforme, supressão de ruídos, melhoria no contraste e ajuste de cor, aplicados com base na detecção de bordas.
+%\section{Foreground Extraction of underwater Videos via Sparse and Low-rank Matrix Decomposition}
 
 \section{A Vision Based System for Object Detection in Underwater Images.}
-\subsection{resumo}
+
 O artigo propõe um sistema (véiculo autonomo) para detecção e rastreio de objetos submersos em água, o sistema faz detecção automática de canos (que podem se extender por kilometros). Utilizando procedimento para compensasão de cor foi desenvolvido para diminuir problemas causados pela luz, a identificação dos objetos é feita por uma rede neural, que classifica os pixels em tempo real, essa rede neural ajuda a navegação automática do veículo, traçando rotas e caminhos atráves das imagens processadas. Ressonância  geométrica é usada para diminuir a quantidade de detecções falsas, melhorar a precisão e mapear o ambiente, os sistemas de sonar foram desenvolvidos para melhorar a precisão da localização do veículo, não eliminando a utilização de um trasnponder.
 
-\subsection{conclusão}
-O sistema consegue detectar canos e outras estruturas, mesmo com os problemas causados pela falta de luminosidade, dispersão e atenuação da luz e outros problemas como areia sobre canos ou outros detritos; 
+O sistema consegue detectar canos e outras estruturas, mesmo com os problemas causados pela falta de luminosidade, dispersão e atenuação da luz e problemas como areia e detritos sobre canos; 
+
+\section{Comparações}
+\begin{itemize}
+\item Reconhecimento de objetos (OR): Algum objeto ou ser vivo foi reconhecido.
+\item Turbidez no ambiente (TA): O ambiente estudado tinha baixa visibilidade e/ou algum tipo de detrito ou interferência .
+\item Sistema desenvolvido para captura de imagens submersas (SC): Algum sistema criado para capturar imagens submersas foi desenvolvido.
+\item Foco em baixo custo (BC): O projeto foi desenvolvido com ideia de baixo custo ou eficiência energética. 
+\end{itemize}
+
+
+\begin{table}[H]
+\caption{Comparações}
+\small
+\centering
+\begin{tabular}{|p{8cm}|c | c | c | c |}
+ 
+	\hline \textbf{Trabalhos} & \textbf{OR} & \textbf{TA} & \textbf{SC} & \textbf{BC}\\ \hline
+	
+    Computer Vision for ocean observing & X & X &  &  \\ \hline
+	
+    DeepFish: Accurate underwater live fish recognition with deep architecture & \centering X & X &  & X \\ \hline
+      
+      A Vision Based System for Object Detection in Underwater Images & X & X & & X  \\ \hline  
+      
+        Automatic underwater image pre-processing &  & X & &   \\ \hline
+	\end{tabular}
+
+\end{table}
+
